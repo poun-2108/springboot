@@ -69,10 +69,18 @@ jobs:
           PYEOF
 
       - name: Analyse SonarCloud
+        uses: sonarsource/sonarcloud-github-action@v3
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: ./mvnw sonar:sonar -Dsonar.token=${{ secrets.SONAR_TOKEN }} -B
+        with:
+          args: >
+            -Dsonar.organization=nirina2108
+            -Dsonar.projectKey=Nirina2108_TP_5_Docker
+            -Dsonar.java.binaries=target/classes
+            -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml
+            -Dsonar.coverage.exclusions=**/*Application.java,**/exception/**
+            -Dsonar.exclusions=**/AuthUiController.java
 
   docker:
     name: Build et Push Docker Hub
