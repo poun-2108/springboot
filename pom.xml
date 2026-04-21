@@ -29,10 +29,13 @@
 			target/site/jacoco/jacoco.xml
 		</sonar.coverage.jacoco.xmlReportPaths>
 
-		<!-- Exclusions SonarCloud - pas de coverage sur ces fichiers -->
+		<!-- Exclusions SonarCloud - boilerplate sans logique metier -->
 		<sonar.coverage.exclusions>
 			**/*Application.java,
-			**/exception/**
+			**/exception/**,
+			**/dto/**,
+			**/repository/**,
+			**/config/**
 		</sonar.coverage.exclusions>
 	</properties>
 

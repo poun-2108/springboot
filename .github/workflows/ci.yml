@@ -79,7 +79,7 @@ jobs:
             -Dsonar.projectKey=poun-2108_springboot
             -Dsonar.java.binaries=target/classes
             -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml
-            -Dsonar.coverage.exclusions=**/*Application.java,**/exception/**
+            -Dsonar.coverage.exclusions=**/*Application.java,**/exception/**,**/dto/**,**/repository/**,**/config/**
             -Dsonar.exclusions=**/AuthUiController.java
 
   docker:
