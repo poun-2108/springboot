@@ -15,10 +15,6 @@ jobs:
     name: Tests JUnit + Coverage + SonarCloud
     runs-on: ubuntu-latest
 
-    defaults:
-      run:
-        working-directory: springboot
-
     steps:
 
       - name: Checkout du code
@@ -83,10 +79,6 @@ jobs:
     runs-on: ubuntu-latest
     needs: test
     if: github.event_name == 'push'
-
-    defaults:
-      run:
-        working-directory: springboot
 
     steps:
 
