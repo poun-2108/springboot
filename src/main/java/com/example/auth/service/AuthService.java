@@ -30,7 +30,7 @@ import java.util.UUID;
  * SkillHub :
  * - gestion du role apprenant / formateur
  *
- * @author Nirina
+ * @author MU202605
  * @version 1.1
  */
 @Service
@@ -71,6 +71,10 @@ public class AuthService {
      */
     @Value("${app.jwt.expiration}")
     private long jwtExpiration;
+
+    // Si true, l'utilisateur est marque comme verifie des l'inscription (utile en docker sans SMTP)
+    @Value("${skip.email.verification:false}")
+    private boolean skipEmailVerification;
 
     /**
      * Repository utilisateur.
@@ -200,7 +204,8 @@ public class AuthService {
         user.setCreatedAt(LocalDateTime.now());
         user.setToken(null);
         user.setTokenExpiresAt(null);
-        user.setEmailVerified(false);
+        // En docker sans SMTP, on marque l'email comme verifie automatiquement
+        user.setEmailVerified(skipEmailVerification);
         user.setEmailVerificationToken(verificationToken);
         user.setPublicKey(rsaKeyService.publicKeyToString(keyPair.getPublic()));
         user.setPrivateKey(rsaKeyService.privateKeyToString(keyPair.getPrivate()));
