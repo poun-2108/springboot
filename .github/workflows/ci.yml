@@ -75,8 +75,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           args: >
-            -Dsonar.organization=nirina2108
-            -Dsonar.projectKey=Nirina2108_TP_5_Docker
+            -Dsonar.organization=poun-2108
+            -Dsonar.projectKey=poun-2108_springboot
             -Dsonar.java.binaries=target/classes
             -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml
             -Dsonar.coverage.exclusions=**/*Application.java,**/exception/**
